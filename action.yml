@@ -54,7 +54,9 @@ runs:
       shell: bash
       run: |
         echo "DEBUG: Printing values of input variables"
-        echo "${{ toJSON(inputs) }}"
+        echo "${INPUTS_JSON}"
+      env:
+        INPUTS_JSON: ${{ toJSON(inputs) }}
 
     - name: Get Workflow Run ID
       id: get-workflow-run-id
