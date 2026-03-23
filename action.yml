@@ -36,7 +36,7 @@ inputs:
       uploads the artifact again to GitHub and overwrites the old copy, resulting in a new artifact ID. This resets
       the artifact's retention period and when run on a regular schedule, circumvents GitHub's artifact retention limits.
     required: false
-    default: false
+    default: "false"
 
 outputs:
   artifact-id:
