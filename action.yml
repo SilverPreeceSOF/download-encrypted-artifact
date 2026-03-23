@@ -120,7 +120,7 @@ runs:
       shell: bash
       run: |
         echo "INFO: Checking artifact contents"
-        ls -l "${{ inputs.destination }}"
+        ls -la "${{ inputs.destination }}"
 
     - name: Upload Artifact
       id: upload
