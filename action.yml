@@ -116,7 +116,7 @@ runs:
         7z x -so "$local_name" -p"${{ inputs.password }}" | tar xf - -C "${{ inputs.destination }}"
 
     - name: Check Artifact Contents
-      if: ${{ inputs.reset-retention == 'false' }}
+      if: ${{ inputs.reset-retention == 'false' && runner.debug == 1 }}
       shell: bash
       run: |
         echo "INFO: Checking artifact contents"
