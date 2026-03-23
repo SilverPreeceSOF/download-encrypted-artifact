@@ -52,6 +52,7 @@ runs:
   steps:
     - name: Print Inputs
       shell: bash
+      if: ${{ runner.debug == 1 }}
       run: |
         echo "DEBUG: Printing values of input variables"
         echo "${INPUTS_JSON}"
