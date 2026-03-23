@@ -54,10 +54,11 @@ runs:
       shell: bash
       if: ${{ runner.debug == 1 }}
       run: |
-        echo "DEBUG: Printing values of input variables"
-        echo "${INPUTS_JSON}"
+        echo "::add-mask::$PASS_INPUT"
+        echo "::debug::Values of input variables\n${INPUTS_JSON}"
       env:
         INPUTS_JSON: ${{ toJSON(inputs) }}
+        PASS_INPUT: ${{ inputs.password }}
 
     - name: Get Workflow Run ID
       id: get-workflow-run-id
