@@ -50,15 +50,18 @@ runs:
   using: composite
 
   steps:
+    - name: Mask Necessary Inputs
+      shell: bash
+      run: echo "::add-mask::$PASS_INPUT"
+      env:
+        PASS_INPUT: ${{ inputs.password }}
+
     - name: Print Inputs
       shell: bash
       if: ${{ runner.debug == 1 }}
-      run: |
-        echo "::add-mask::$PASS_INPUT"
-        echo "::debug::Values of input variables\n${INPUTS_JSON}"
+      run: echo "::debug::Values of input variables\n${INPUTS_JSON}"
       env:
         INPUTS_JSON: ${{ toJSON(inputs) }}
-        PASS_INPUT: ${{ inputs.password }}
 
     - name: Get Workflow Run ID
       id: get-workflow-run-id
